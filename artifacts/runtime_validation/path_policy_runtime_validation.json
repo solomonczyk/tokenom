@@ -1,0 +1,9 @@
+{
+  "allowed_paths_passed": true,
+  "env_file_blocked": true,
+  "forbidden_contents_read": false,
+  "git_config_blocked": true,
+  "private_key_blocked": true,
+  "secrets_dir_blocked": true,
+  "verdict": "PASS"
+}

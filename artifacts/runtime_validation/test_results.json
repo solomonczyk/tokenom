@@ -1,0 +1,16 @@
+{
+  "benchmark_dummy_only_passed": true,
+  "overall_test_verdict": "BLOCKED_WITH_EXPLANATION: upstream suite cannot complete until headroom._core is built; maturin build is blocked by missing MSVC link.exe.",
+  "runtime_validation_tests_passed": true,
+  "tokenom_security_tests_passed": true,
+  "upstream_tests_attempted": true,
+  "upstream_tests_failed": [
+    "tests/test_tag_protector_invariant.py: ModuleNotFoundError: headroom._core",
+    "tests/test_transforms/test_tag_protector.py: ModuleNotFoundError: headroom._core",
+    "tests/test_transforms_content_detection.py: ModuleNotFoundError: headroom._core"
+  ],
+  "upstream_tests_passed": false,
+  "upstream_tests_skipped": [
+    "10 skipped during upstream collection attempt"
+  ]
+}

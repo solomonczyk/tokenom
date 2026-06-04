@@ -1,0 +1,10 @@
+{
+  "build_tool_blocker": null,
+  "cargo_version": "cargo 1.95.0 (f2d3ce0bd 2026-03-21)",
+  "os": "Windows-10-10.0.19045-SP0",
+  "package_manager": "pip + maturin + rustup",
+  "pip_version": "pip 26.1.2 from C:\\tmp\\tokenom-venv\\Lib\\site-packages\\pip (python 3.12)",
+  "python_version": "Python 3.12.10",
+  "rustc_version": "rustc 1.95.0 (59807616e 2026-04-14)",
+  "venv_python_version": "Python 3.12.10"
+}

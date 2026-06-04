@@ -1,0 +1,10 @@
+{
+  "compiled_core_blocker": "headroom._core is required for full runtime acceptance; build is blocked because MSVC link.exe is unavailable.",
+  "compiled_core_import_ok": false,
+  "compiled_core_required": true,
+  "compression_callable": true,
+  "compression_error": null,
+  "headroom_import_ok": true,
+  "security_guard_callable": true,
+  "tokenom_security_import_ok": true
+}

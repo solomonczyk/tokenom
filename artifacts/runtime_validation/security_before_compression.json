@@ -1,0 +1,13 @@
+{
+  "compression_error": null,
+  "dummy_only": true,
+  "network_provider_called": false,
+  "private_key_blocked": true,
+  "raw_secret_in_audit": false,
+  "raw_secret_in_compressed_payload": false,
+  "raw_secret_in_redacted_payload": false,
+  "safe_to_continue": true,
+  "secrets_detected": true,
+  "secrets_redacted": true,
+  "security_scan_before_compression": true
+}
