@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from typing import Iterable
 
 from .path_policy import is_forbidden_path
 from .scanner import SecretFinding, scan_text
@@ -32,12 +33,12 @@ class PayloadDecision:
     reasons: tuple[str, ...] = field(default_factory=tuple)
 
 
-def redact_text(text: str) -> str:
+def redact_text(text: str, findings: Iterable[SecretFinding] | None = None) -> str:
     """Replace detected secrets with typed redaction markers."""
 
-    findings = scan_text(text)
+    active_findings = tuple(scan_text(text) if findings is None else findings)
     redacted = text
-    for finding in sorted(findings, key=lambda item: item.start, reverse=True):
+    for finding in sorted(active_findings, key=lambda item: item.start, reverse=True):
         redacted = redacted[: finding.start] + finding.redaction_label + redacted[finding.end :]
     return redacted
 
@@ -76,4 +77,4 @@ def guard_payload(
     if reasons:
         return PayloadDecision(False, "", findings, tuple(reasons))
 
-    return PayloadDecision(True, redact_text(payload), findings, ())
+    return PayloadDecision(True, redact_text(payload, findings), findings, ())

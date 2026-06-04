@@ -4,8 +4,11 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import hashlib
+import json
 import time
 from typing import Any
+
+from .redactor import PayloadDecision, guard_payload
 
 
 @dataclass(frozen=True)
@@ -56,3 +59,108 @@ class SHA256PayloadCache:
         key = self.digest(payload)
         self._items[key] = (time.time(), value)
         return key
+
+    def __len__(self) -> int:
+        return len(self._items)
+
+
+@dataclass(frozen=True)
+class PayloadSecurityCacheStats:
+    """Runtime counters for cached Tokenom payload guard decisions."""
+
+    hits: int = 0
+    misses: int = 0
+    stores: int = 0
+    entries: int = 0
+
+    @property
+    def hit_rate(self) -> float:
+        total = self.hits + self.misses
+        return self.hits / total if total else 0.0
+
+
+class CachedPayloadGuard:
+    """Cache identical payload guard decisions without skipping security policy.
+
+    The cache key includes the raw payload hash material plus the path, mode,
+    and production-key policy flags, so a decision for one security context is
+    never reused for a different context.
+    """
+
+    def __init__(
+        self,
+        policy: PerformancePolicy | None = None,
+        *,
+        ttl_hours: int | None = None,
+    ) -> None:
+        self.policy = policy or PerformancePolicy()
+        self._cache = SHA256PayloadCache(ttl_hours=ttl_hours or self.policy.cache_ttl_hours)
+        self._hits = 0
+        self._misses = 0
+        self._stores = 0
+
+    def guard(
+        self,
+        payload: str,
+        *,
+        mode: str = "redact",
+        path: str | None = None,
+        block_production_keys: bool = True,
+    ) -> PayloadDecision:
+        """Apply Tokenom payload guardrails with per-context memoization."""
+
+        use_cache = self.policy.enable_cache and self._cacheable(payload)
+        cache_material = ""
+        if use_cache:
+            cache_material = self._cache_material(
+                payload,
+                mode=mode,
+                path=path,
+                block_production_keys=block_production_keys,
+            )
+            cached = self._cache.get(cache_material)
+            if cached is not None:
+                self._hits += 1
+                return cached
+
+        self._misses += 1
+        decision = guard_payload(
+            payload,
+            mode=mode,
+            path=path,
+            block_production_keys=block_production_keys,
+        )
+        if use_cache:
+            self._cache.set(cache_material, decision)
+            self._stores += 1
+        return decision
+
+    def stats(self) -> PayloadSecurityCacheStats:
+        return PayloadSecurityCacheStats(
+            hits=self._hits,
+            misses=self._misses,
+            stores=self._stores,
+            entries=len(self._cache),
+        )
+
+    def _cacheable(self, payload: str) -> bool:
+        return len(payload.encode("utf-8")) <= self.policy.max_payload_bytes
+
+    @staticmethod
+    def _cache_material(
+        payload: str,
+        *,
+        mode: str,
+        path: str | None,
+        block_production_keys: bool,
+    ) -> str:
+        return json.dumps(
+            {
+                "payload": payload,
+                "mode": mode,
+                "path": path,
+                "block_production_keys": block_production_keys,
+            },
+            sort_keys=True,
+            separators=(",", ":"),
+        )

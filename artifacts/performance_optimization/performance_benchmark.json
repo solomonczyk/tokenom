@@ -1,0 +1,20 @@
+{
+  "cache_entries": 1,
+  "cache_hit_rate": 0.9995,
+  "cache_hits": 2000,
+  "cache_misses": 1,
+  "cache_stores": 1,
+  "cached_guard_median_ms": 40.502,
+  "dummy_only": true,
+  "iterations_per_round": 400,
+  "network_provider_called": false,
+  "payload_bytes": 17599,
+  "production_keys_used": false,
+  "raw_secret_in_redacted_payload": false,
+  "runtime_improvement_percent": 98.94,
+  "safe_to_continue": true,
+  "secrets_redacted": true,
+  "task": "TOKENOM-PERFORMANCE-OPTIMIZATION-004",
+  "uncached_guard_median_ms": 3821.618,
+  "verdict": "PASS"
+}
