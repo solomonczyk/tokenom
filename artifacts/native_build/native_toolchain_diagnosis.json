@@ -1,0 +1,21 @@
+{
+  "task": "TOKENOM-WINDOWS-NATIVE-CORE-BUILD-003",
+  "host_os": "Windows-10-10.0.19045-SP0",
+  "python_version": "Python 3.12.10",
+  "venv_path": "C:\\tmp\\tokenom-venv",
+  "venv_python_version": "Python 3.12.10",
+  "pip_version": "pip 26.1.2 from C:\\tmp\\tokenom-venv\\Lib\\site-packages\\pip (python 3.12)",
+  "maturin_version": "maturin 1.13.3",
+  "rustc_version": "rustc 1.95.0 (59807616e 2026-04-14)",
+  "cargo_version": "cargo 1.95.0 (f2d3ce0bd 2026-03-21)",
+  "developer_shell_used": true,
+  "vcvars64_path": "C:\\BuildTools\\VC\\Auxiliary\\Build\\vcvars64.bat",
+  "cl_path": "C:\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+  "link_path": "C:\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe",
+  "rc_path": "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.18362.0\\x64\\rc.exe",
+  "windows_sdk_lib_path": "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.18362.0\\um\\x64\\kernel32.Lib",
+  "initial_blocker": "MSVC link.exe and then Windows SDK kernel32.lib were unavailable to the native build environment.",
+  "resolution": "Visual Studio Build Tools developer environment plus Windows SDK 10.0.18362.0 were made available before running maturin.",
+  "build_tool_blocker": null,
+  "toolchain_ready": true
+}

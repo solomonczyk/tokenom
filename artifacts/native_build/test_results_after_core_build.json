@@ -1,0 +1,33 @@
+{
+  "task": "TOKENOM-WINDOWS-NATIVE-CORE-BUILD-003",
+  "focused_tokenom_tests_command": "python -m pytest tests\\test_tokenom_security.py tests\\test_tokenom_runtime_validation.py -q -p no:cacheprovider",
+  "focused_tokenom_tests_exit_code": 0,
+  "tokenom_security_tests_passed": true,
+  "tokenom_runtime_validation_tests_passed": true,
+  "focused_tokenom_tests_summary": "16 passed in 0.73s",
+  "core_regression_tests_command": "python -m pytest tests\\test_tag_protector_invariant.py tests\\test_transforms\\test_tag_protector.py tests\\test_transforms_content_detection.py -q -p no:cacheprovider",
+  "core_regression_tests_exit_code": 0,
+  "core_regression_tests_passed": true,
+  "core_regression_tests_summary": "42 passed in 1.25s",
+  "dummy_benchmark_command": "python benchmarks\\tokenom_dummy_benchmark.py",
+  "dummy_benchmark_passed": true,
+  "dummy_benchmark_output": {
+    "dummy_only": true,
+    "payload_bytes": 4864,
+    "skipped_small_payload": true,
+    "cache_hit": true,
+    "duration_ms": 1.275
+  },
+  "upstream_tests_attempted": true,
+  "upstream_tests_command": "python -m pytest -q -p no:cacheprovider",
+  "upstream_tests_passed": false,
+  "upstream_tests_timeout": true,
+  "upstream_tests_timeout_seconds": 1800,
+  "upstream_tests_failure_count_observed": 0,
+  "upstream_collection_command": "python -m pytest --collect-only -q -p no:cacheprovider",
+  "upstream_tests_collected": 5632,
+  "upstream_collection_errors": 0,
+  "upstream_collection_skipped": 7,
+  "headroom_core_missing_errors": 0,
+  "verdict": "PASS_NATIVE_CORE_WITH_UPSTREAM_TIMEOUT"
+}

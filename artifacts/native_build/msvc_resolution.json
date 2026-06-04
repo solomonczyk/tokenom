@@ -1,0 +1,20 @@
+{
+  "task": "TOKENOM-WINDOWS-NATIVE-CORE-BUILD-003",
+  "msvc_installed_or_available": true,
+  "visual_studio_build_tools_path": "C:\\BuildTools",
+  "vcvars_or_developer_shell_used": true,
+  "vcvars64_path": "C:\\BuildTools\\VC\\Auxiliary\\Build\\vcvars64.bat",
+  "cl_available": true,
+  "cl_path": "C:\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+  "link_available": true,
+  "link_path": "C:\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\link.exe",
+  "windows_sdk_available": true,
+  "windows_sdk_version": "10.0.18362.0",
+  "rc_available": true,
+  "rc_path": "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.18362.0\\x64\\rc.exe",
+  "kernel32_lib_available": true,
+  "kernel32_lib_path": "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.18362.0\\um\\x64\\kernel32.Lib",
+  "build_environment_ready": true,
+  "force_push_used": false,
+  "verdict": "PASS"
+}

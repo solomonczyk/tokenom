@@ -1,0 +1,18 @@
+{
+  "task": "TOKENOM-WINDOWS-NATIVE-CORE-BUILD-003",
+  "package": "tokenom",
+  "package_version": "0.22.4",
+  "core_module": "headroom._core",
+  "build_command": "cmd /v:on /c \"call C:\\BuildTools\\VC\\Auxiliary\\Build\\vcvars64.bat && set \"\"PATH=%USERPROFILE%\\.cargo\\bin;C:\\tmp\\tokenom-venv\\Scripts;!PATH!\"\" && set \"\"VIRTUAL_ENV=C:\\tmp\\tokenom-venv\"\" && C:\\tmp\\tokenom-venv\\Scripts\\python.exe -m maturin develop --release\"",
+  "build_exit_code": 0,
+  "maturin_version": "maturin 1.13.3",
+  "rustc_version": "rustc 1.95.0 (59807616e 2026-04-14)",
+  "cargo_version": "cargo 1.95.0 (f2d3ce0bd 2026-03-21)",
+  "compiled_core_built": true,
+  "compiled_core_artifact": "headroom\\_core.cp312-win_amd64.pyd",
+  "compiled_core_artifact_tracked": false,
+  "compiled_core_import_ok": true,
+  "installed_into_venv": true,
+  "build_log_summary": "Finished release build and installed tokenom-0.22.4 into C:\\tmp\\tokenom-venv.",
+  "verdict": "PASS"
+}

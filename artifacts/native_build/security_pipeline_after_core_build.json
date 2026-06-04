@@ -1,0 +1,22 @@
+{
+  "task": "TOKENOM-WINDOWS-NATIVE-CORE-BUILD-003",
+  "compiled_core_import_ok": true,
+  "compiled_core_blocker": null,
+  "security_scan_before_compression": true,
+  "secrets_detected": true,
+  "secrets_redacted": true,
+  "private_key_blocked": true,
+  "raw_secret_in_redacted_payload": false,
+  "raw_secret_in_compressed_payload": false,
+  "raw_secret_in_audit": false,
+  "network_provider_called": false,
+  "dummy_only": true,
+  "remote_proxy_blocked_by_default": true,
+  "proxy_local_only_default": true,
+  "forbidden_paths_blocked": true,
+  "forbidden_contents_read": false,
+  "production_keys_used": false,
+  "real_private_data_used": false,
+  "safe_to_continue": true,
+  "verdict": "PASS"
+}

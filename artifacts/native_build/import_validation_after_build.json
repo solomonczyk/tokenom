@@ -1,0 +1,18 @@
+{
+  "task": "TOKENOM-WINDOWS-NATIVE-CORE-BUILD-003",
+  "headroom_import_ok": true,
+  "headroom_core_import_ok": true,
+  "tokenom_security_import_ok": true,
+  "security_guard_callable": true,
+  "compression_runtime_available": true,
+  "compression_error": null,
+  "compiled_core_blocker": null,
+  "missing_core_errors": 0,
+  "validation_command": "C:\\tmp\\tokenom-venv\\Scripts\\python.exe -c \"import headroom._core; print('core ok'); import headroom; print('headroom ok'); import tokenom.security.scanner, tokenom.security.redactor, tokenom.security.path_policy, tokenom.security.proxy_policy, tokenom.security.audit_logger; print('security ok')\"",
+  "validation_output": [
+    "core ok",
+    "headroom ok",
+    "security ok"
+  ],
+  "verdict": "PASS"
+}
