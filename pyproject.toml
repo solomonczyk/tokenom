@@ -3,17 +3,18 @@ requires = ["maturin>=1.5,<2.0"]
 build-backend = "maturin"
 
 [project]
-name = "headroom-ai"
+name = "tokenom"
 version = "0.22.4"
-description = "The Context Optimization Layer for LLM Applications - Cut costs by 50-90%"
+description = "Security-hardened Headroom derivative with local AI-agent safety gates"
 readme = "README.md"
 license = "Apache-2.0"
 requires-python = ">=3.10"
 authors = [
-    { name = "Headroom Contributors" }
+    { name = "Headroom Contributors" },
+    { name = "Tokenom Contributors" }
 ]
 maintainers = [
-    { name = "Headroom Contributors" }
+    { name = "Tokenom Contributors" }
 ]
 keywords = [
     "llm",

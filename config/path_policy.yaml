@@ -1,0 +1,25 @@
+path_policy:
+  denylist:
+    - .env
+    - .env.*
+    - secrets/
+    - credentials/
+    - .vercel/
+    - .git/config
+    - "*.pem"
+    - "*.key"
+    - "*.p12"
+    - "*.sqlite"
+    - "*.db"
+    - node_modules/
+    - .venv/
+    - __pycache__/
+  allowlist_examples:
+    - src/
+    - app/
+    - tests/
+    - docs/
+    - README.md
+    - package.json
+    - pyproject.toml
+    - requirements.txt

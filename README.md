@@ -1,3 +1,19 @@
+## Tokenom
+
+Tokenom is a security-hardened derivative of
+[chopratejas/headroom](https://github.com/chopratejas/headroom).
+
+- Original project: https://github.com/chopratejas/headroom
+- Original license: Apache License 2.0
+- Tokenom preserves the original Headroom license, notice, and attribution.
+- Tokenom adds local AI-agent safety gates, secret redaction, path policy,
+  proxy safety, no-raw-log audit behavior, and baseline performance guardrails.
+
+See `docs/ORIGINAL_PROJECT.md`, `docs/MODIFICATIONS.md`, and
+`docs/SECURITY_PROTOCOL.md` for attribution and hardening details.
+
+---
+
 ```
   ██╗  ██╗███████╗ █████╗ ██████╗ ██████╗  ██████╗  ██████╗ ███╗   ███╗
   ██║  ██║██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔═══██╗██╔═══██╗████╗ ████║

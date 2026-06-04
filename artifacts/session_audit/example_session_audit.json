@@ -1,0 +1,17 @@
+{
+  "project": "Tokenom",
+  "based_on": "chopratejas/headroom",
+  "license_preserved": true,
+  "proxy_local_only": true,
+  "raw_logs_written": false,
+  "requests_total": 0,
+  "blocked_requests": 0,
+  "secrets_detected": 0,
+  "secrets_redacted": 0,
+  "forbidden_paths_blocked": true,
+  "production_keys_sent": false,
+  "compression_enabled": true,
+  "token_reduction_percent": null,
+  "cache_hit_rate": null,
+  "safe_to_continue": true
+}

@@ -1,0 +1,10 @@
+security:
+  log_raw_prompts: false
+  log_raw_tool_outputs: false
+  log_raw_responses: false
+  log_redacted_payload_only: true
+  block_env_files: true
+  block_private_keys: true
+  redact_api_keys: true
+  proxy_host_default: "127.0.0.1"
+  allow_remote_proxy: false

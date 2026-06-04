@@ -1,0 +1,6 @@
+performance:
+  skip_below_bytes: 2048
+  enable_cache: true
+  cache_ttl_hours: 24
+  max_payload_mb: 5
+  max_latency_ms: 300
