@@ -1,0 +1,29 @@
+{
+  "tool_request_id": "devtool-001",
+  "correlation_id": "corr-001",
+  "mode": "sandbox",
+  "operation": "build_context_bundle",
+  "repository": {
+    "root": "<repo>/tests/fixtures/local_developer_tool/repository",
+    "include": [
+      "src/*.py",
+      "src/**/*.py",
+      "src/**/*.json",
+      "src/**/*.txt",
+      "README.md"
+    ],
+    "exclude": [
+      "tests/generated/**"
+    ]
+  },
+  "context": {
+    "max_files": 50,
+    "max_file_bytes": 131072,
+    "max_bundle_bytes": 524288,
+    "include_git_metadata": true
+  },
+  "execution": {
+    "timeout_ms": 5000,
+    "allow_retry": false
+  }
+}

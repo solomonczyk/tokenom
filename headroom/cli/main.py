@@ -41,6 +41,7 @@ def _register_commands() -> None:
         install,  # noqa: F401
         learn,  # noqa: F401
         local_agent_adapter,  # noqa: F401
+        local_developer_tool,  # noqa: F401
         mcp,  # noqa: F401
         perf,  # noqa: F401
         proxy,  # noqa: F401

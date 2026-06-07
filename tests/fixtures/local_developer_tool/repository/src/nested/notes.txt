@@ -1,0 +1,4 @@
+Bearer CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+
+The bearer token above is fake and must never appear raw in results,
+manifests, audits, or logs.
