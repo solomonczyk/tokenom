@@ -4,7 +4,7 @@ build-backend = "maturin"
 
 [project]
 name = "tokenom"
-version = "0.22.4"
+version = "0.23.0"
 description = "Security-hardened Headroom derivative with local AI-agent safety gates"
 readme = "README.md"
 license = "Apache-2.0"
