@@ -1,0 +1,257 @@
+{
+  "task_id": "TOKENOM-CONTROLLED-REAL-LOCAL-REPOSITORY-PILOT-008",
+  "verdict": "ACCEPTED_WITH_CARRYOVERS",
+  "current_state": "controlled_real_local_repository_pilot_accepted_with_carryovers",
+  "repository_path": "F:\\Dev\\Projects\\tokenom",
+  "pilot_target_path": "F:\\Dev\\Projects\\tokenom",
+  "branch": "main",
+  "base_head_expected": "ecc79e1e65c828df0be8e8cd5f21545bff59e287",
+  "head_before": "ecc79e1e65c828df0be8e8cd5f21545bff59e287",
+  "head_after_pilot_before_commit": "ecc79e1e65c828df0be8e8cd5f21545bff59e287",
+  "feature_completed": true,
+  "real_local_repository_pilot_executed": true,
+  "pilot_target_operator_approved": true,
+  "read_only_mode": true,
+  "inspection_executed": true,
+  "inspection_passed": true,
+  "primary_bundle_execution_count": 1,
+  "cache_verification_execution_count": 1,
+  "failed_request_retry_executed": false,
+  "include_patterns": [
+    "README.md",
+    "docs/integrations/**/*.md",
+    "tokenom/local_developer_tool/**/*.py",
+    "tokenom/local_agent_adapter/**/*.py",
+    "tokenom/sandbox_agent/**/*.py"
+  ],
+  "selected_file_count": 30,
+  "excluded_file_count": 4203,
+  "source_bytes": 148120,
+  "optimized_bytes": 21,
+  "optimized_bytes_explanation": "The 21-byte optimized result is the real runtime result recorded by the mock/sandbox optimization path for both the primary request and deterministic cache verification. The pilot measured controlled runtime/cache behavior, not production semantic compression quality, and no raw source was written to manifest or audit.",
+  "compression_applied": true,
+  "cache_behavior_verified": true,
+  "deterministic_bundle_id_verified": true,
+  "bundle_id": "e040f68ccb9eadfd",
+  "repository_boundary_passed": true,
+  "mandatory_exclusions_enforced": true,
+  "secret_scan_executed": true,
+  "redaction_executed": true,
+  "post_redaction_verification_passed": true,
+  "local_agent_adapter_invocations": 2,
+  "sandbox_orchestrator_invocations": 2,
+  "runtime_invocations": 2,
+  "direct_runtime_bypass_detected": false,
+  "manifest_created": true,
+  "audit_created": true,
+  "manifest_path": ".tokenom_runtime/pilots/008/manifests/e040f68ccb9eadfd.json",
+  "audit_path": ".tokenom_runtime/pilots/008/audit.jsonl",
+  "structured_result_path": ".tokenom_runtime/pilots/008/pilot_results.json",
+  "manifest_contains_raw_source": false,
+  "audit_contains_raw_source": false,
+  "raw_secret_leaked": false,
+  "absolute_paths_exposed": false,
+  "files_outside_repository_read": 0,
+  "mandatory_excluded_files_read": 0,
+  "git_directory_contents_read": 0,
+  "env_files_read": 0,
+  "private_key_files_read": 0,
+  "binary_files_read": 0,
+  "git_branch_unchanged": true,
+  "git_head_unchanged_during_pilot": true,
+  "git_remotes_unchanged": true,
+  "pilot_repository_content_modified_by_integration": false,
+  "git_mutation_commands_executed": false,
+  "git_network_commands_executed": false,
+  "external_network_requests": 0,
+  "real_provider_requests": 0,
+  "public_server_created": false,
+  "background_daemon_started": false,
+  "max_attempts_per_request": 1,
+  "automatic_retry_executed": false,
+  "blind_retry_executed": false,
+  "feature_flags_enabled_for_pilot": true,
+  "feature_flags_disabled_after_pilot": true,
+  "rollback_blocked_request_verified": true,
+  "rollback_result": {
+    "status": "blocked",
+    "repository_scan_executed": false,
+    "adapter_invocations": 0,
+    "runtime_invocations": 0,
+    "provider_invocations": 0
+  },
+  "runtime_artifacts_gitignored": true,
+  "runtime_artifacts_staged": false,
+  "pre_existing_dirty_files_classified": true,
+  "pre_existing_dirty_file_classification": [
+    {
+      "path": ".gitignore",
+      "status": "modified",
+      "belongs_to_pilot_008": true,
+      "pre_existing_before_pilot": true,
+      "safe_to_commit_in_pilot_closeout": true,
+      "reason": "Single-line .tokenom_runtime/ ignore rule required to keep Pilot 008 runtime manifest and audit out of Git.",
+      "action": "commit"
+    },
+    {
+      "path": "headroom/integrations/__init__.py",
+      "status": "modified",
+      "belongs_to_pilot_008": false,
+      "pre_existing_before_pilot": true,
+      "safe_to_commit_in_pilot_closeout": false,
+      "reason": "Functional optional-import boundary change for integration dependencies, unrelated to the Pilot 008 closeout artifacts.",
+      "action": "leave_untouched"
+    },
+    {
+      "path": "tests/test_local_developer_tool.py",
+      "status": "modified",
+      "belongs_to_pilot_008": false,
+      "pre_existing_before_pilot": true,
+      "safe_to_commit_in_pilot_closeout": false,
+      "reason": "Layer 007/local developer tool regression coverage for globstar matching and token-name exclusions; not a closeout proof artifact.",
+      "action": "leave_untouched"
+    },
+    {
+      "path": "tests/test_security_validations.py",
+      "status": "modified",
+      "belongs_to_pilot_008": false,
+      "pre_existing_before_pilot": true,
+      "safe_to_commit_in_pilot_closeout": false,
+      "reason": "Security test fixture cleanup using tmp_path; unrelated to Pilot 008 runtime evidence.",
+      "action": "leave_untouched"
+    },
+    {
+      "path": "tokenom/local_developer_tool/service.py",
+      "status": "modified",
+      "belongs_to_pilot_008": false,
+      "pre_existing_before_pilot": true,
+      "safe_to_commit_in_pilot_closeout": false,
+      "reason": "Layer 007/local developer tool implementation changes for globstar and mandatory exclusion behavior; not authored by closeout.",
+      "action": "leave_untouched"
+    }
+  ],
+  "unrelated_dirty_files_committed": false,
+  "pre_existing_unrelated_changes_preserved": true,
+  "pre_existing_unrelated_changes_not_staged": true,
+  "pilot_artifacts_committed": true,
+  "pilot_changes_uncommitted": false,
+  "commit_created": true,
+  "commit_message": "test: record controlled real local repository pilot",
+  "push_executed": true,
+  "remote_branch_updated": true,
+  "local_head_matches_origin_main": true,
+  "git_clean": false,
+  "git_dirty_reason": "pre_existing_unrelated_changes_preserved",
+  "pilot_layer_git_closeout_complete": true,
+  "real_local_read_only_pilot": "accepted",
+  "pilot_git_closeout": "complete",
+  "feature_flags_default_disabled": true,
+  "real_provider_integration_allowed": false,
+  "autonomous_editing_allowed": false,
+  "production_workflow_allowed": false,
+  "next_allowed_action": "TOKENOM-LOCAL-DAILY-WORKFLOW-READINESS-009",
+  "symlink_escape_test": {
+    "status": "skipped_environment",
+    "details": "Windows symlink creation failed with OSError(22, 'A required privilege is not held by the client')."
+  },
+  "junction_escape_test": {
+    "status": "passed",
+    "details": {
+      "fixture_inside_pilot_repository": false,
+      "fixture_removed": true,
+      "escape_excluded": true,
+      "selected_files": 1,
+      "files_read": 1
+    }
+  },
+  "closeout_tests": {
+    "focused_pilot_closeout_initial": {
+      "command": "python -m pytest tests/test_local_developer_tool.py -k \"valid_context_build or inspect_repository or rollback or git_metadata or no_network or mandatory_exclusions or symlink_escape\" --basetemp .pytest-tmp\\pilot-closeout",
+      "status": "setup_error",
+      "passed": 0,
+      "failed": 0,
+      "errors": 7,
+      "skipped": 0,
+      "reason": "pytest basetemp parent .pytest-tmp did not exist on Windows; no test bodies ran"
+    },
+    "focused_pilot_closeout": {
+      "command": "python -m pytest tests/test_local_developer_tool.py -k \"valid_context_build or inspect_repository or rollback or git_metadata or no_network or mandatory_exclusions or symlink_escape\" --basetemp .pytest-tmp\\pilot-closeout",
+      "status": "passed",
+      "passed": 6,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 1
+    },
+    "integration_closeout": {
+      "command": "python -m pytest tests/test_local_developer_tool.py tests/test_local_agent_adapter.py tests/test_sandbox_agent_integration.py --basetemp .pytest-tmp\\integration-closeout",
+      "status": "passed",
+      "passed": 53,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 1
+    },
+    "requested_broad_ruff": {
+      "command": "python -m ruff check tokenom/local_developer_tool tokenom/local_agent_adapter tokenom/sandbox_agent tests",
+      "status": "failed_pre_existing_unrelated",
+      "failed": 1,
+      "reason": "I001 unsorted imports in tests/test_tokenom_security.py, outside Pilot 008 closeout artifacts"
+    },
+    "focused_pilot_ruff": {
+      "command": "python -m ruff check tokenom/local_developer_tool tokenom/local_agent_adapter tokenom/sandbox_agent tests/test_local_developer_tool.py tests/test_local_agent_adapter.py tests/test_sandbox_agent_integration.py",
+      "status": "passed",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "timeout_carryovers": {
+    "tests/test_compress_api.py": {
+      "status": "timeout_180_seconds",
+      "classification": "uncontrolled_workload_or_external_optional_integration_pre_existing"
+    },
+    "tests/test_compression_determinism.py": {
+      "status": "timeout_180_seconds",
+      "classification": "uncontrolled_workload_or_performance_pre_existing"
+    },
+    "broad_suite": {
+      "status": "blocked_by_missing_litellm_and_timeout",
+      "classification": "external_dependency_and_uncontrolled_workload_pre_existing"
+    }
+  },
+  "carryovers": [
+    "mypy_not_installed",
+    "symlink_test_environment_limited",
+    "junction_runtime_fixture_environment_limited",
+    "test_compress_api_timeout",
+    "test_compression_determinism_timeout",
+    "broad_suite_missing_litellm_or_timeout",
+    "requested_broad_ruff_import_order_pre_existing"
+  ],
+  "acceptance_criteria": {
+    "pilot_runtime_result_accepted": true,
+    "proof_consistent": true,
+    "pre_existing_changes_classified": true,
+    "unrelated_changes_preserved": true,
+    "pilot_artifacts_committed": true,
+    "pilot_commit_pushed": true,
+    "local_head_matches_origin_main": true,
+    "feature_flags_disabled": true,
+    "real_provider_requests": 0,
+    "external_network_requests": 0,
+    "git_mutation_commands_during_pilot": 0,
+    "carryovers_explicit": true
+  },
+  "documentation_created": [
+    "docs/pilots/tokenom_real_local_repository_pilot_008.md",
+    "docs/pilots/tokenom_real_local_repository_pilot_008_security_report.md",
+    "docs/proofs/proof_tokenom_controlled_real_local_repository_pilot_008.json"
+  ],
+  "files_to_commit": [
+    ".gitignore",
+    "docs/pilots/tokenom_real_local_repository_pilot_008.md",
+    "docs/pilots/tokenom_real_local_repository_pilot_008_security_report.md",
+    "docs/proofs/proof_tokenom_controlled_real_local_repository_pilot_008.json"
+  ],
+  "forbidden_actions_executed": false,
+  "layer_009_started": false
+}
