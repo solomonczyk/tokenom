@@ -43,6 +43,8 @@ pip_audit_result.txt
 ruff_result.txt
 reqs.txt
 artifacts/sandbox_agent_runtime/
+artifacts/local_developer_tool_runtime/
+artifacts/local_daily_workflow_runtime/
 artifacts/pytest-tmp/
 .tokenom_runtime/
 

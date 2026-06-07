@@ -17,6 +17,7 @@ from . import (  # noqa: F401
     init,
     install,
     learn,
+    local_workflow,
     mcp,
     perf,
     proxy,
