@@ -1,0 +1,11 @@
+{
+  "request_id": "sandbox-request-malformed-001",
+  "mode": "sandbox",
+  "input": {
+    "prompt": "Missing required fields",
+    "context": {}
+  },
+  "workspace": {
+    "root": "<repo>/tests/fixtures/sandbox_agent/workspace"
+  }
+}

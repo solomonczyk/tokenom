@@ -6,9 +6,9 @@ credential shapes Tokenom must never forward or persist raw.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 import re
-from typing import Iterable
+from collections.abc import Iterable
+from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
@@ -71,6 +71,16 @@ _PATTERNS: tuple[_PatternSpec, ...] = (
         re.compile(
             r"(?im)^\s*(?:export\s+)?[A-Z0-9_]*(?:API[_-]?KEY|TOKEN|SECRET|PASSWORD|PASSWD|PRIVATE[_-]?KEY|DATABASE_URL|SESSION[_-]?ID)[A-Z0-9_]*\s*=\s*[^\s#'\"]{8,}\s*$"
         ),
+        True,
+    ),
+    _PatternSpec("EMAIL_ADDRESS", re.compile(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b")),
+    _PatternSpec(
+        "WINDOWS_USER_PATH",
+        re.compile(r"(?i)\b[A-Z]:\\Users\\[A-Za-z0-9_.-]+(?:\\[^\s'\"<>]*)?"),
+    ),
+    _PatternSpec(
+        "PASSWORD_ASSIGNMENT",
+        re.compile(r"(?i)\b(?:password|passwd|pwd)\s*[:=]\s*[^\s'\"<>]{6,}"),
         True,
     ),
 )

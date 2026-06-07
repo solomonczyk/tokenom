@@ -1,0 +1,16 @@
+{
+  "request_id": "sandbox-request-provider-001",
+  "mode": "sandbox",
+  "task_type": "dummy_agent_task",
+  "input": {
+    "prompt": "Real provider must be blocked",
+    "context": {}
+  },
+  "workspace": {
+    "root": "<repo>/tests/fixtures/sandbox_agent/workspace"
+  },
+  "provider": "openai",
+  "metadata": {
+    "source": "tokenom_sandbox_test"
+  }
+}

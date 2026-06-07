@@ -1,0 +1,18 @@
+{
+  "request_id": "sandbox-request-001",
+  "mode": "sandbox",
+  "task_type": "dummy_agent_task",
+  "input": {
+    "prompt": "Summarize the dummy fixture",
+    "context": {
+      "fixture": "dummy.txt"
+    }
+  },
+  "workspace": {
+    "root": "<repo>/tests/fixtures/sandbox_agent/workspace"
+  },
+  "provider": "mock",
+  "metadata": {
+    "source": "tokenom_sandbox_test"
+  }
+}

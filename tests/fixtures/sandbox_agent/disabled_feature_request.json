@@ -1,0 +1,16 @@
+{
+  "request_id": "sandbox-request-disabled-001",
+  "mode": "sandbox",
+  "task_type": "dummy_agent_task",
+  "input": {
+    "prompt": "Feature flag disabled path",
+    "context": {}
+  },
+  "workspace": {
+    "root": "<repo>/tests/fixtures/sandbox_agent/workspace"
+  },
+  "provider": "mock",
+  "metadata": {
+    "source": "tokenom_sandbox_test"
+  }
+}

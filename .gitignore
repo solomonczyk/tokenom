@@ -42,6 +42,8 @@ bandit_result.txt
 pip_audit_result.txt
 ruff_result.txt
 reqs.txt
+artifacts/sandbox_agent_runtime/
+artifacts/pytest-tmp/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

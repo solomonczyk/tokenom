@@ -1,0 +1,16 @@
+{
+  "request_id": "sandbox-request-prod-001",
+  "mode": "production",
+  "task_type": "dummy_agent_task",
+  "input": {
+    "prompt": "Production mode must be blocked",
+    "context": {}
+  },
+  "workspace": {
+    "root": "<repo>/tests/fixtures/sandbox_agent/workspace"
+  },
+  "provider": "mock",
+  "metadata": {
+    "source": "tokenom_sandbox_test"
+  }
+}

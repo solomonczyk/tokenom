@@ -312,7 +312,7 @@ ignore = [
 ]
 
 [tool.ruff.lint.isort]
-known-first-party = ["headroom"]
+known-first-party = ["headroom", "tokenom"]
 
 [tool.ruff.format]
 quote-style = "double"

@@ -1,0 +1,22 @@
+{
+  "request_id": "sandbox-request-secret-001",
+  "mode": "sandbox",
+  "task_type": "dummy_agent_task",
+  "input": {
+    "prompt": "Summarize dummy text with OPENAI_API_KEY=sk-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA and email tester@example.invalid",
+    "context": {
+      "bearer": "Bearer CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+      "windows_path": "C:\\Users\\dummy-user\\sandbox",
+      "env_secret": "DUMMY_SECRET=notarealsecretvalue",
+      "password": "password=dummyPassword123",
+      "private_key_marker": "-----BEGIN PRIVATE KEY-----\nabc123\n-----END PRIVATE KEY-----"
+    }
+  },
+  "workspace": {
+    "root": "<repo>/tests/fixtures/sandbox_agent/workspace"
+  },
+  "provider": "mock",
+  "metadata": {
+    "source": "tokenom_sandbox_test"
+  }
+}

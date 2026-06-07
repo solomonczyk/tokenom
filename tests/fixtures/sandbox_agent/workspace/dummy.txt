@@ -1,0 +1,2 @@
+This is a dummy sandbox fixture.
+It contains no private project data and no production credentials.

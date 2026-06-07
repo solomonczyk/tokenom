@@ -1,0 +1,17 @@
+{
+  "request_id": "sandbox-request-failure-001",
+  "mode": "sandbox",
+  "task_type": "dummy_agent_task",
+  "input": {
+    "prompt": "Controlled provider failure",
+    "context": {}
+  },
+  "workspace": {
+    "root": "<repo>/tests/fixtures/sandbox_agent/workspace"
+  },
+  "provider": "mock",
+  "metadata": {
+    "source": "tokenom_sandbox_test",
+    "mock_behavior": "failure"
+  }
+}
