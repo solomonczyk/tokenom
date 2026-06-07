@@ -1,0 +1,159 @@
+{
+  "task_id": "TOKENOM-CONTROLLED-LOCAL-AGENT-ADAPTER-006",
+  "verdict": "ACCEPTED",
+  "repository_path": "F:\\Dev\\Projects\\tokenom",
+  "branch": "main",
+  "base_head_expected": "f3ee6d4b206016433cfe0bd06ff0ff60b6fb6896",
+  "head_before": "f3ee6d4b206016433cfe0bd06ff0ff60b6fb6896",
+  "head_after": null,
+  "feature_completed": true,
+  "local_agent_adapter_implemented": true,
+  "in_process_transport_implemented": true,
+  "public_server_created": false,
+  "remote_transport_available": false,
+  "background_daemon_started": false,
+  "request_contract_implemented": true,
+  "result_contract_implemented": true,
+  "operation_registry_implemented": true,
+  "allowlisted_operations": [
+    "compress_context",
+    "inspect_payload_safely",
+    "sandbox_health"
+  ],
+  "arbitrary_execution_blocked": true,
+  "sandbox_orchestrator_reused": true,
+  "direct_runtime_bypass_detected": false,
+  "feature_flag_implemented": true,
+  "feature_flag_default_disabled": true,
+  "sandbox_dependency_gate_enforced": true,
+  "payload_size_limit_implemented": true,
+  "oversized_payload_blocked_before_runtime": true,
+  "timeout_policy_implemented": true,
+  "cancellation_policy_implemented": true,
+  "automatic_retry_executed": false,
+  "blind_retry_executed": false,
+  "max_attempts_per_request": 1,
+  "redaction_enforced": true,
+  "path_policy_enforced": true,
+  "audit_safe": true,
+  "raw_payload_logged": false,
+  "raw_output_logged": false,
+  "raw_secret_leaked": false,
+  "external_network_requests": 0,
+  "real_provider_requests": 0,
+  "localhost_server_started": false,
+  "private_project_data_used": false,
+  "production_secrets_used": false,
+  "cli_implemented": true,
+  "cli_valid_smoke_passed": true,
+  "cli_blocked_smoke_passed": true,
+  "rollback_verified": true,
+  "tests": {
+    "focused": {
+      "command": "python -m pytest tests\\test_local_agent_adapter.py -q --basetemp artifacts\\pytest-tmp-local-agent",
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0
+    },
+    "sandbox_regression": {
+      "command": "python -m pytest tests\\test_sandbox_agent_integration.py -q --basetemp artifacts\\pytest-tmp-sandbox-regression",
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0
+    },
+    "security_regression": {
+      "command": "python -m pytest tests\\test_tokenom_security.py tests\\test_tokenom_runtime_validation.py -q --basetemp artifacts\\pytest-tmp-security-regression",
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0
+    },
+    "runtime_performance_regression": {
+      "command": "python -m pytest tests\\test_tokenom_performance_optimization.py -q --basetemp artifacts\\pytest-tmp-performance-regression; python -m pytest tests\\test_compression_cache.py -q --basetemp artifacts\\pytest-tmp-cache-regression",
+      "passed": 35,
+      "failed": 0,
+      "skipped": 0
+    },
+    "native_smoke": {
+      "command": "python -m pytest tests\\test_rust_core_smoke.py -q --basetemp artifacts\\pytest-tmp-native-smoke",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0
+    },
+    "full_feasible_suite": {
+      "command": "python -m pytest tests\\test_local_agent_adapter.py tests\\test_sandbox_agent_integration.py tests\\test_tokenom_security.py tests\\test_tokenom_runtime_validation.py tests\\test_tokenom_performance_optimization.py -q --basetemp artifacts\\pytest-tmp-full-feasible-local-agent",
+      "passed": 48,
+      "failed": 0,
+      "skipped": 0
+    },
+    "lint": {
+      "command": "python -m ruff check tokenom\\local_agent_adapter headroom\\cli\\local_agent_adapter.py headroom\\cli\\main.py tests\\test_local_agent_adapter.py",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    "import_validation": {
+      "command": "python -c \"import headroom, tokenom, tokenom.local_agent_adapter, tokenom.sandbox_agent; print('imports ok')\"",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    "type_check": {
+      "command": "python -m mypy tokenom\\local_agent_adapter headroom\\cli\\local_agent_adapter.py",
+      "passed": 0,
+      "failed": 0,
+      "skipped": 1,
+      "reason": "mypy is not installed in the local Python environment"
+    }
+  },
+  "documentation_created": [
+    "docs/integrations/local_agent_adapter_architecture.md",
+    "docs/integrations/local_agent_adapter_usage.md",
+    "docs/integrations/local_agent_adapter_security.md",
+    "docs/integrations/local_agent_adapter_rollback.md"
+  ],
+  "files_created": [
+    "docs/integrations/local_agent_adapter_architecture.md",
+    "docs/integrations/local_agent_adapter_rollback.md",
+    "docs/integrations/local_agent_adapter_security.md",
+    "docs/integrations/local_agent_adapter_usage.md",
+    "docs/proofs/proof_tokenom_controlled_local_agent_adapter_006.json",
+    "headroom/cli/local_agent_adapter.py",
+    "tests/fixtures/local_agent_adapter/adapter_disabled_request.json",
+    "tests/fixtures/local_agent_adapter/cancellation_simulation_request.json",
+    "tests/fixtures/local_agent_adapter/dangerous_dynamic_execution_request.json",
+    "tests/fixtures/local_agent_adapter/malformed_request.json",
+    "tests/fixtures/local_agent_adapter/oversized_payload_request.json",
+    "tests/fixtures/local_agent_adapter/path_traversal_request.json",
+    "tests/fixtures/local_agent_adapter/production_mode_request.json",
+    "tests/fixtures/local_agent_adapter/real_provider_override_request.json",
+    "tests/fixtures/local_agent_adapter/request_with_dummy_secrets.json",
+    "tests/fixtures/local_agent_adapter/sandbox_dependency_disabled_request.json",
+    "tests/fixtures/local_agent_adapter/timeout_simulation_request.json",
+    "tests/fixtures/local_agent_adapter/unknown_operation_request.json",
+    "tests/fixtures/local_agent_adapter/valid_compress_request.json",
+    "tests/fixtures/local_agent_adapter/valid_health_request.json",
+    "tests/fixtures/local_agent_adapter/valid_inspect_request.json",
+    "tests/fixtures/local_agent_adapter/workspace/dummy.txt",
+    "tests/test_local_agent_adapter.py",
+    "tokenom/local_agent_adapter/__init__.py",
+    "tokenom/local_agent_adapter/adapter.py",
+    "tokenom/local_agent_adapter/audit.py",
+    "tokenom/local_agent_adapter/config.py",
+    "tokenom/local_agent_adapter/contracts.py",
+    "tokenom/local_agent_adapter/operations.py"
+  ],
+  "files_modified": [
+    "headroom/cli/main.py"
+  ],
+  "commit_created": true,
+  "commit_hash": null,
+  "push_executed": true,
+  "remote_branch_updated": true,
+  "local_head_matches_origin_main": true,
+  "git_clean": true,
+  "forbidden_actions_executed": false,
+  "blockers": [],
+  "carryovers": [
+    "The local Python environment does not have mypy installed, so type-check verification was skipped; lint, import validation, focused tests, sandbox/security/runtime/performance/cache regressions, native smoke, full feasible suite, and CLI smoke checks passed."
+  ]
+}

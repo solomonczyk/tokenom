@@ -1,0 +1,17 @@
+{
+  "adapter_request_id": "adapter-unknown-001",
+  "correlation_id": "corr-unknown-001",
+  "mode": "sandbox",
+  "operation": "run_shell",
+  "payload": {
+    "content": "dummy fixture content",
+    "metadata": {}
+  },
+  "workspace": {
+    "root": "<repo>/tests/fixtures/local_agent_adapter/workspace"
+  },
+  "execution": {
+    "timeout_ms": 5000,
+    "allow_retry": false
+  }
+}

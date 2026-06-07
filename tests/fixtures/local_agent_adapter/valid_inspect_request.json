@@ -1,0 +1,17 @@
+{
+  "adapter_request_id": "adapter-inspect-001",
+  "correlation_id": "corr-inspect-001",
+  "mode": "sandbox",
+  "operation": "inspect_payload_safely",
+  "payload": {
+    "content": "inspect this dummy payload safely",
+    "metadata": {}
+  },
+  "workspace": {
+    "root": "<repo>/tests/fixtures/local_agent_adapter/workspace"
+  },
+  "execution": {
+    "timeout_ms": 5000,
+    "allow_retry": false
+  }
+}

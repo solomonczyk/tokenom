@@ -1,0 +1,19 @@
+{
+  "adapter_request_id": "adapter-timeout-001",
+  "correlation_id": "corr-timeout-001",
+  "mode": "sandbox",
+  "operation": "compress_context",
+  "payload": {
+    "content": "dummy timeout fixture content",
+    "metadata": {
+      "mock_behavior": "timeout"
+    }
+  },
+  "workspace": {
+    "root": "<repo>/tests/fixtures/local_agent_adapter/workspace"
+  },
+  "execution": {
+    "timeout_ms": 5000,
+    "allow_retry": false
+  }
+}

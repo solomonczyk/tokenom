@@ -1,0 +1,18 @@
+{
+  "adapter_request_id": "adapter-cancel-001",
+  "correlation_id": "corr-cancel-001",
+  "mode": "sandbox",
+  "operation": "compress_context",
+  "payload": {
+    "content": "dummy cancellation fixture content",
+    "metadata": {}
+  },
+  "workspace": {
+    "root": "<repo>/tests/fixtures/local_agent_adapter/workspace"
+  },
+  "execution": {
+    "timeout_ms": 5000,
+    "allow_retry": false,
+    "cancelled": true
+  }
+}

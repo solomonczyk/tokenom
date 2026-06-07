@@ -1,0 +1,16 @@
+{
+  "adapter_request_id": "adapter-health-001",
+  "correlation_id": "corr-health-001",
+  "mode": "sandbox",
+  "operation": "sandbox_health",
+  "payload": {
+    "metadata": {}
+  },
+  "workspace": {
+    "root": "<repo>/tests/fixtures/local_agent_adapter/workspace"
+  },
+  "execution": {
+    "timeout_ms": 5000,
+    "allow_retry": false
+  }
+}

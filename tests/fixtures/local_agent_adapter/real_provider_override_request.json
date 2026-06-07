@@ -1,0 +1,19 @@
+{
+  "adapter_request_id": "adapter-provider-001",
+  "correlation_id": "corr-provider-001",
+  "mode": "sandbox",
+  "operation": "compress_context",
+  "payload": {
+    "content": "dummy fixture content",
+    "metadata": {
+      "provider": "openai"
+    }
+  },
+  "workspace": {
+    "root": "<repo>/tests/fixtures/local_agent_adapter/workspace"
+  },
+  "execution": {
+    "timeout_ms": 5000,
+    "allow_retry": false
+  }
+}

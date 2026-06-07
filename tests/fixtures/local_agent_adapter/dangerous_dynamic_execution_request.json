@@ -1,0 +1,18 @@
+{
+  "adapter_request_id": "adapter-dynamic-001",
+  "correlation_id": "corr-dynamic-001",
+  "mode": "sandbox",
+  "operation": "compress_context",
+  "payload": {
+    "content": "dummy fixture content",
+    "metadata": {}
+  },
+  "workspace": {
+    "root": "<repo>/tests/fixtures/local_agent_adapter/workspace"
+  },
+  "execution": {
+    "timeout_ms": 5000,
+    "allow_retry": false
+  },
+  "function": "os.system"
+}

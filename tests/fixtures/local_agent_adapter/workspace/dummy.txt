@@ -1,0 +1,1 @@
+Dummy local agent adapter workspace content only.
