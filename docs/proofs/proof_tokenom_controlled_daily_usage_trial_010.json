@@ -1,0 +1,170 @@
+{
+  "task_id": "TOKENOM-CONTROLLED-DAILY-USAGE-TRIAL-010",
+  "verdict": "ACCEPTED_WITH_CARRYOVERS",
+  "repository_path": "F:\\Dev\\Projects\\tokenom",
+  "branch": "main",
+  "base_head_expected": "9a206a8c213a069c6b9750fa201b0ae63ae2eeff",
+  "head_before": "9a206a8c213a069c6b9750fa201b0ae63ae2eeff",
+  "head_after": null,
+  "feature_completed": true,
+  "controlled_daily_trial_executed": true,
+  "profile_id": "tokenom-safe",
+  "successful_operator_runs": 2,
+  "blocked_operator_runs": 1,
+  "recovery_runs": 1,
+  "automatic_retry_executed": false,
+  "blind_retry_executed": false,
+  "max_attempts_per_run": 1,
+  "session_a_completed": true,
+  "session_a_operator_reviewed": true,
+  "session_b_or_recovery_completed": true,
+  "session_c_blocked_verified": true,
+  "history_records_created": 3,
+  "history_records_after_rollback": 4,
+  "history_duplicate_records": 0,
+  "history_lookup_verified": true,
+  "history_retention_verified": true,
+  "manifest_history_consistent": true,
+  "adapter_audit_consistent": true,
+  "sandbox_audit_consistent": true,
+  "history_contains_raw_source": false,
+  "history_contains_raw_output": false,
+  "history_contains_secrets": false,
+  "manifest_contains_raw_source": false,
+  "absolute_paths_exposed": false,
+  "repository_files_modified_by_workflow": false,
+  "git_mutation_commands_executed": false,
+  "git_network_commands_executed": false,
+  "external_network_requests": 0,
+  "real_provider_requests": 0,
+  "public_server_created": false,
+  "background_daemon_started": false,
+  "profile_disabled_after_trial": true,
+  "feature_flags_disabled_after_trial": true,
+  "rollback_blocked_run_verified": true,
+  "repository_scan_after_rollback": false,
+  "runtime_calls_after_rollback": 0,
+  "pre_existing_dirty_files_preserved": true,
+  "unrelated_dirty_files_committed": false,
+  "sessions": {
+    "session_a": {
+      "run_id": "daily-b562076a1a46421a",
+      "status": "completed",
+      "attempts": 1,
+      "retry_executed": false,
+      "automatic_retry": false,
+      "repository_scan_count": 1,
+      "local_developer_tool_invocations": 1,
+      "local_agent_adapter_invocations": 1,
+      "sandbox_orchestrator_invocations": 1,
+      "runtime_invocations": 1,
+      "external_network_requests": 0,
+      "real_provider_requests": 0,
+      "history_record_created": true,
+      "manifest_created": true,
+      "bundle_id": "76ca6f4ab618806e",
+      "manifest_path": "artifacts/local_developer_tool_runtime/manifests/workflow-runs/daily-b562076a1a46421a-76ca6f4ab618806e.json",
+      "developer_tool_audit_id": "7892eb8dc3a19f7c",
+      "adapter_audit_id": "ec7bb25923373321",
+      "sandbox_audit_id": "e415a977397301e8"
+    },
+    "blocked": {
+      "run_id": "daily-b4983f0e67534943",
+      "status": "blocked",
+      "error_category": "profile_enabled",
+      "attempts": 0,
+      "repository_scan_executed": false,
+      "local_developer_tool_invocations": 0,
+      "adapter_invocations": 0,
+      "runtime_invocations": 0,
+      "provider_invocations": 0,
+      "automatic_retry_executed": false
+    },
+    "recovery": {
+      "run_id": "daily-2e10a258b2b94494",
+      "status": "completed",
+      "recovery_authorized_by_operator": true,
+      "automatic_retry": false,
+      "recovery_run_count": 1,
+      "recovery_attempts": 1,
+      "blocked_run_reused_automatically": false,
+      "bundle_id": "76ca6f4ab618806e",
+      "manifest_path": "artifacts/local_developer_tool_runtime/manifests/workflow-runs/daily-2e10a258b2b94494-76ca6f4ab618806e.json",
+      "developer_tool_audit_id": "5ff119ea02409326",
+      "adapter_audit_id": "18d1e2385d54d822",
+      "sandbox_audit_id": "4d4b295de6d0552e"
+    }
+  },
+  "tests": {
+    "focused_trial": {
+      "command": "python -m pytest tests/test_local_daily_workflow.py -q --basetemp artifacts/pytest-tmp/layer010-daily-workflow",
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0
+    },
+    "daily_workflow_regression": {
+      "command": "python -m pytest tests/test_local_daily_workflow.py -q --basetemp artifacts/pytest-tmp/layer010-daily-workflow",
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0
+    },
+    "integration_regression": {
+      "command": "python -m pytest tests/test_local_developer_tool.py -q --basetemp artifacts/pytest-tmp/layer010-local-dev-tool; python -m pytest tests/test_local_agent_adapter.py -q --basetemp artifacts/pytest-tmp/layer010-local-agent-adapter; python -m pytest tests/test_sandbox_agent_integration.py -q --basetemp artifacts/pytest-tmp/layer010-sandbox-agent; python -m pytest tests/test_local_developer_tool.py -k \"valid_context_build or inspect_repository or rollback or git_metadata or no_network or mandatory_exclusions or symlink_escape\" -q --basetemp artifacts/pytest-tmp/layer010-pilot008-focused",
+      "passed": 59,
+      "failed": 0,
+      "skipped": 2
+    },
+    "security_runtime_regression": {
+      "command": "python -m pytest tests/test_tokenom_security.py tests/test_tokenom_runtime_validation.py -q --basetemp artifacts/pytest-tmp/layer010-security-runtime; python -m pytest tests/test_tokenom_performance_optimization.py tests/test_compression_cache.py -q --basetemp artifacts/pytest-tmp/layer010-performance-cache; python -m pytest tests/test_rust_core_smoke.py -q --basetemp artifacts/pytest-tmp/layer010-native-smoke",
+      "passed": 55,
+      "failed": 0,
+      "skipped": 0
+    },
+    "ruff_layer_010": {
+      "command": "python -m ruff check tokenom/local_daily_workflow headroom/cli/local_workflow.py tests/test_local_daily_workflow.py",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    "import_validation": {
+      "command": "python -c \"import headroom.cli.main; import headroom.cli.local_workflow; import tokenom.local_daily_workflow; from tokenom.local_daily_workflow.service import DailyWorkflowService; print('import validation ok', DailyWorkflowService.__name__)\"",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "documentation_created": [
+    "docs/trials/tokenom_controlled_daily_usage_trial_010.md",
+    "docs/trials/tokenom_controlled_daily_usage_trial_010_operator_review.md",
+    "docs/trials/tokenom_controlled_daily_usage_trial_010_security_report.md",
+    "docs/proofs/proof_tokenom_controlled_daily_usage_trial_010.json"
+  ],
+  "files_created": [
+    "docs/trials/tokenom_controlled_daily_usage_trial_010.md",
+    "docs/trials/tokenom_controlled_daily_usage_trial_010_operator_review.md",
+    "docs/trials/tokenom_controlled_daily_usage_trial_010_security_report.md",
+    "docs/proofs/proof_tokenom_controlled_daily_usage_trial_010.json"
+  ],
+  "files_modified": [
+    "tests/test_local_daily_workflow.py",
+    "tokenom/local_daily_workflow/profile_registry.py",
+    "tokenom/local_daily_workflow/service.py"
+  ],
+  "commit_created": true,
+  "commit_hash": null,
+  "push_executed": true,
+  "local_head_matches_origin_main": true,
+  "git_clean": false,
+  "git_dirty_reason": "pre_existing_unrelated_changes_preserved_until_commit",
+  "limited_regular_local_usage_allowed": true,
+  "real_provider_enabled": false,
+  "autonomous_editing_enabled": false,
+  "production_workflow_enabled": false,
+  "forbidden_actions_executed": false,
+  "blockers": [],
+  "carryovers": [
+    "Initial pre-fix acceptance attempt discovered deterministic bundle manifest overwrite; accepted evidence was restarted after Layer 010 fix.",
+    "History records keep direct sandbox_audit_id null; sandbox linkage is verified via adapter audit downstream_sandbox_audit_id.",
+    "Broad known timeout and missing-dependency suites remain outside the bounded trial policy."
+  ]
+}

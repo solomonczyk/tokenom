@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import os
 import tempfile
+import time
 from pathlib import Path
 from typing import Any
 
@@ -123,12 +124,18 @@ class ProfileRegistry:
 
     def _load_payload(self) -> dict[str, Any]:
         self.ensure_default_registry()
-        try:
-            payload = json.loads(self.path.read_text(encoding="utf-8"))
-        except json.JSONDecodeError as exc:
-            raise RegistryCorruptionError("registry_corrupted") from exc
-        except OSError as exc:
-            raise RegistryCorruptionError("registry_unreadable") from exc
+        last_error: OSError | None = None
+        for _ in range(3):
+            try:
+                payload = json.loads(self.path.read_text(encoding="utf-8"))
+                break
+            except json.JSONDecodeError as exc:
+                raise RegistryCorruptionError("registry_corrupted") from exc
+            except OSError as exc:
+                last_error = exc
+                time.sleep(0.02)
+        else:
+            raise RegistryCorruptionError("registry_unreadable") from last_error
         if not isinstance(payload, dict) or set(payload) - _REGISTRY_TOP_LEVEL:
             raise RegistryCorruptionError("registry_schema_invalid")
         if payload.get("version") != 1 or not isinstance(payload.get("profiles"), list):

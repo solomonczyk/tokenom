@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -157,7 +158,7 @@ class DailyWorkflowService:
             env=self.env,
             manifest_dir=self.manifest_dir,
         )
-        result = tool.execute(request)
+        result = self._preserve_run_manifest(run_id, tool.execute(request))
         record = self.history.append(self._history_record(run_id, profile_id, result, tool, started))
         return {
             "run_id": run_id,
@@ -184,6 +185,37 @@ class DailyWorkflowService:
         if run_id:
             return {"history": [] if self.history.get(run_id) is None else [self.history.get(run_id)]}
         return {"history": self.history.list(limit=limit)}
+
+    def _preserve_run_manifest(self, run_id: str, result: dict[str, Any]) -> dict[str, Any]:
+        bundle = result.get("bundle") if isinstance(result.get("bundle"), dict) else {}
+        bundle_id = bundle.get("bundle_id")
+        if result.get("status") != "completed" or not isinstance(bundle_id, str) or not bundle_id:
+            return result
+
+        source = self.manifest_dir / f"{bundle_id}.json"
+        if not source.exists():
+            return result
+        try:
+            manifest = json.loads(source.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            return result
+
+        workflow_manifest_id = f"{run_id}-{bundle_id}"
+        manifest["workflow_run_id"] = run_id
+        manifest["workflow_manifest_id"] = workflow_manifest_id
+        destination = self.manifest_dir / "workflow-runs" / f"{workflow_manifest_id}.json"
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(json.dumps(manifest, indent=2, sort_keys=True), encoding="utf-8")
+
+        updated = dict(result)
+        updated["manifest_path"] = (
+            Path("artifacts")
+            / "local_developer_tool_runtime"
+            / "manifests"
+            / "workflow-runs"
+            / f"{workflow_manifest_id}.json"
+        ).as_posix()
+        return updated
 
     @staticmethod
     def _developer_tool_request(profile: Any, run_id: str) -> dict[str, Any]:

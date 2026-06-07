@@ -164,6 +164,25 @@ def test_corrupted_registry_detected_and_atomic_update(tmp_path: Path) -> None:
     assert json.loads(registry_path.read_text(encoding="utf-8"))["profiles"][0]["enabled"] is True
 
 
+def test_registry_read_retries_transient_unreadable_file(monkeypatch, tmp_path: Path) -> None:
+    registry = ProfileRegistry(tmp_path / "home" / "profiles.json")
+    original_read_text = Path.read_text
+    calls = {"count": 0}
+
+    def flaky_read_text(path: Path, *args, **kwargs):
+        if path == registry.path and calls["count"] == 0:
+            calls["count"] += 1
+            raise PermissionError("temporarily locked")
+        return original_read_text(path, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "read_text", flaky_read_text)
+
+    profiles = registry.list_profiles()
+
+    assert calls["count"] == 1
+    assert profiles[0].profile_id == "tokenom-safe"
+
+
 def test_preflight_gates_and_no_repository_scan_before_gates_pass(tmp_path: Path) -> None:
     repo = _copy_git_repo(tmp_path)
     home = tmp_path / "home"
@@ -255,6 +274,53 @@ def test_completed_run_manifest_history_and_safety(tmp_path: Path) -> None:
     assert str(repo) not in serialized
     for raw in RAW_DUMMY_VALUES:
         assert raw not in serialized
+
+
+def test_sequential_runs_preserve_distinct_manifests_for_same_bundle(tmp_path: Path) -> None:
+    repo = _copy_git_repo(tmp_path)
+    service = _service(tmp_path, repo, enabled=True, env=_enabled_env(tmp_path / "home"))
+
+    first = service.run("tokenom-safe")
+    second = service.run("tokenom-safe")
+
+    assert first["status"] == "completed"
+    assert second["status"] == "completed"
+    assert first["developer_tool"]["bundle"]["bundle_id"] == second["developer_tool"]["bundle"]["bundle_id"]
+    assert first["history_record"]["manifest_path"] != second["history_record"]["manifest_path"]
+    for result in (first, second):
+        manifest_name = Path(result["history_record"]["manifest_path"]).name
+        manifest = json.loads((tmp_path / "manifests" / "workflow-runs" / manifest_name).read_text(encoding="utf-8"))
+        assert manifest["workflow_run_id"] == result["run_id"]
+        assert manifest["tool_request_id"] == result["run_id"]
+
+
+def test_controlled_trial_success_blocked_operator_recovery(tmp_path: Path) -> None:
+    repo = _copy_git_repo(tmp_path)
+    home = tmp_path / "home"
+    service = _service(tmp_path, repo, enabled=True, env=_enabled_env(home))
+
+    session_a = service.run("tokenom-safe")
+    service.disable_profile("tokenom-safe")
+    blocked = service.run("tokenom-safe")
+    service.enable_profile("tokenom-safe")
+    recovery_preflight = service.preflight("tokenom-safe")
+    recovery = service.run("tokenom-safe")
+    records = service.history_list(limit=10)["history"]
+
+    assert session_a["status"] == "completed"
+    assert blocked["status"] == "blocked"
+    assert recovery_preflight["ready"] is True
+    assert recovery["status"] == "completed"
+    assert session_a["run_id"] != recovery["run_id"]
+    assert blocked["execution"]["attempts"] == 0
+    assert blocked["proof"]["repository_scan_executed"] is False
+    assert blocked["proof"]["adapter_invocations"] == 0
+    assert blocked["proof"]["runtime_invocations"] == 0
+    assert session_a["execution"]["retry_executed"] is False
+    assert recovery["execution"]["retry_executed"] is False
+    assert sum(1 for record in records if record["status"] == "completed") == 2
+    assert sum(1 for record in records if record["status"] == "blocked") == 1
+    assert len({record["run_id"] for record in records}) == len(records)
 
 
 def test_history_retention_corruption_and_lookup_are_safe(tmp_path: Path) -> None:
